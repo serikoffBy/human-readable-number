@@ -8,7 +8,9 @@ module.exports = function toReadable(number) {
     switch (stringNumber.length) {
         case 3:
             result = (stringNumber.length === 3 && stringNumber[2] === '0') ? 
-                (`${result}${dig[+stringNumber[0]]} hundred ${dec[+stringNumber[1]]}`) : 
+                (`${result}${dig[+stringNumber[0]]} hundred${dec[+stringNumber[1]]}`) : 
+                (+stringNumber.slice(1) < 20 && +stringNumber.slice(1) > 10) ?
+                (`${result}${dig[+stringNumber[0]]} hundred ${tens[+stringNumber[2]]}`) :
                 (`${result}${dig[+stringNumber[0]]} hundred${dec[+stringNumber[1]]} ${dig[+stringNumber[2]]}`);
                 break;
         case 2: 
